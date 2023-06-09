@@ -3,7 +3,8 @@ window.addEventListener("load", () => {
 })
 
 async function pedirPersonajesFetch() {
-    const url = "https://rickandmortyapi.com/api/character";
+    const random = Math.ceil(Math.random() * 42);
+    const url = `https://rickandmortyapi.com/api/character/?page=${random}`;
     const resultado = await fetch(url);
     const respuesta = await resultado.json();
     cargarPersonajes(respuesta);
@@ -18,17 +19,18 @@ function cargarPersonajes(res) {
     personajes.forEach(personaje => {
         const personajeContainer = document.createElement("div");
         personajeContainer.classList.add("personaje");
-        
+        let pId = personaje.id;
+
+        if(personaje.id < 10)  pId = "00" + personaje.id;
+        else if(personaje.id >= 10 && personaje.id < 100) pId = "0" + personaje.id;
+
         personajeContainer.innerHTML = `
         <div class="personaje-img">
             <img src="${personaje.image}" alt="${personaje.name}">
         </div>
         <div class="personaje-data">
             <p class="name">${personaje.name}</p>
-            <p class="especie">${personaje.species}</p>
-            <p class="gender">${personaje.gender}</p>
-            <p class="location">${personaje.location.name}</p>
-            <p class="id">${personaje.id}</p>
+            <p class="id">#${pId}</p>
         </div>
         <button class="btn" id="${personaje.id}">View deploy</button>
         `;
@@ -66,6 +68,7 @@ function botonesEvents(btns,res) {
                     <p class="modal-especie">Species: <span>${personajeElegido.species}</span></p>
                     <p class="modal-gender">Gender: <span>${personajeElegido.gender}</span></p>
                     <p class="modal-origen">Origin: <span>${personajeElegido.location.name}</span></p>
+                    <p class="modal-origen">Status: <span>${personajeElegido.status}</span></p>
                 </div>
             `;
             modal.append(modalContainer);

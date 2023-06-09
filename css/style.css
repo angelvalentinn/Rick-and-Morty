@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
 
 * {
     margin: 0;
@@ -50,7 +50,7 @@ img {
 
 .main {
     padding: 2rem 1rem;
-    background-color: var(--clr-secundary);
+    background-color: #e1e1e1;
     color: var(--clr-black);
 }
 
@@ -93,40 +93,31 @@ img {
 
 .personaje-data {
     background-color: var(--clr-secundary);
-    padding-block: .5rem 0;
+    padding-block: .5rem;
     padding-inline: .3rem;
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
     row-gap: .6rem;
     width: 100%;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .name {
-    grid-row: 1 / 2;
-}
-
-.especie {
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
-    text-align: end;
-}
-
-.gender {
-    grid-row: 2 / 3;
-}
-
-.location {
-    grid-column: 2 / 3;
-    text-align: left;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #44281d;
 }
 
 .id {
     grid-column: 1 / 3;
     justify-self: center;
+    font-family: 'Coiny', cursive;
+    font-size:1rem;
+    color: var(--clr-c);
 }
 
 .btn {

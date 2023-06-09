@@ -1,0 +1,2 @@
+Usando API de Rick and Morty para mostrar los personajes y un breve deploy con su respectiva información.
+En cada petición/recarga de página se genera una página random entre 1 y 42 donde se alojan 20 personas en cada una.
