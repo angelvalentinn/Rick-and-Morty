@@ -2,9 +2,17 @@ window.addEventListener("load", () => {
     pedirPersonajesFetch();
 })
 
-async function pedirPersonajesFetch() {
-    const random = Math.ceil(Math.random() * 42);
-    const url = `https://rickandmortyapi.com/api/character/?page=${random}`;
+const personajesContainer = document.querySelector(".personajes");
+const arrowLeft = document.getElementById('arrow-left');
+const arrowRight = document.getElementById('arrow-right');
+const pageLeft = document.querySelector('.page-left');
+const pageRight = document.querySelector('.page-right');
+const pageActual = document.querySelector('.pagina-actual');
+
+let pageContador = 1;
+
+async function pedirPersonajesFetch() {  
+    const url = `https://rickandmortyapi.com/api/character/?page=${pageContador}`;
     const resultado = await fetch(url);
     const respuesta = await resultado.json();
     cargarPersonajes(respuesta);
@@ -14,7 +22,6 @@ async function pedirPersonajesFetch() {
 
 function cargarPersonajes(res) {
     const personajes = res.results;
-    const personajesContainer = document.querySelector(".personajes");
 
     personajes.forEach(personaje => {
         const personajeContainer = document.createElement("div");
@@ -85,3 +92,29 @@ function botonesEvents(btns,res) {
     })
     
 }
+
+arrowLeft.addEventListener('click', () => {
+    if(pageContador > 1) {
+        pageContador--;
+        personajesContainer.innerHTML = '';
+        pageActual.innerText = pageContador;
+        pageLeft.innerText = Number(pageLeft.innerText) - 1;
+        pageRight.innerText = Number(pageRight.innerText) - 1;
+        pedirPersonajesFetch();
+    }
+})
+
+arrowRight.addEventListener('click', () => {
+    if(pageContador != 42) {
+        pageContador++;
+        personajesContainer.innerHTML = '';
+        pageActual.innerText = pageContador;
+        pageLeft.innerText = Number(pageActual.innerText) - 1;
+        pageRight.innerText = Number(pageActual.innerText) + 1;
+        pedirPersonajesFetch();
+    } else {
+        pageActual.innerText = 'MAX';
+    }
+
+})
+

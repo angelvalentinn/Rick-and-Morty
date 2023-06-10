@@ -187,6 +187,53 @@ img {
     cursor: pointer;
 }
 
+.btns-arrow {
+    padding-block: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 4rem;
+}
+
+.arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btns-arrow p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btns-arrow p span {
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+#arrow-left,
+#arrow-right{ 
+    font-size: 1.2rem;
+    background-color:#44281d;
+    color: var(--clr-secundary);
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-right,
+.page-left {
+ font-weight: 800;
+}
+
+
+
 /* ------ MEDIAS QUERYS ------ */
 
 @media screen and (min-width: 700px) {
